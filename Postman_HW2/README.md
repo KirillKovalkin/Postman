@@ -5,8 +5,10 @@
 ```js
 GET http://162.55.220.72:5005/first
 ```
-![image](https://github.com/KirillKovalkin/Postman/assets/108697657/5e7c5dda-7403-4abe-9bbb-bc9c23f5417c)
-
++ **Response**
+```js
+This is the first responce from server!ss
+```
 ### 2. Статус код 200
 ```js
 pm.test("Status code is 200", function () {
@@ -27,18 +29,42 @@ pm.test("Body matches string", function () {
 ___
 ### `http://162.55.220.72:5005/user_info_3`
 ### 1. Отправить запрос.
++ **Request**
 ```js
 POST http://162.55.220.72:5005/user_info_3
 age:30
 name:"Kirill"
 salary:1000
 ```
++ **Response**
+```json
+{
+    "age": "30",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "u_salary_1_5_year": 4000
+    },
+    "name": "Kirill",
+    "salary": 1000
+}
+````
 ### 2. Статус код 200
 ```js
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/3a1a3968-83fa-44bf-9d10-3f1612d2ee16)
+
 ### 3. Спарсить response body в json.
 ```js
 var resp = pm.response.json();
@@ -49,18 +75,24 @@ pm.test("Name == name request", function () {
     pm.expect(resp.name).to.eql("Kirill");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/64713c95-71e2-4af2-9e16-840aa1f89ee7)
+
 ### 5. Проверить, что age в ответе равно age s request (age вбить руками.)
 ```js
 pm.test("Age == age request", function () {
     pm.expect(resp.age).to.eql("30");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/b9c6780f-44bb-4688-9502-891f0f50504c)
+
 ### 6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)
 ```js
 pm.test("Salary == salary request", function () {
     pm.expect(resp.salary).to.eql(1000);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/ce06857c-8eb2-4f93-8181-5ebaaa2775ad)
+
 ### 7. Спарсить request.
 ```js
 var req = request.data
@@ -71,18 +103,24 @@ pm.test("Name response == name request", function () {
     pm.expect(resp.name).to.eql(req.name);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/92a60109-c7be-4cab-a107-8c67061c2d28)
+
 ### 9. Проверить, что age в ответе равно age s request (age забрать из request.)
 ```js
 pm.test("Age response == age request", function () {
     pm.expect(resp.age).to.eql(req.age);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/225793e8-8bba-4da0-9eac-10b63923ed89)
+
 ### 10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
 ```js
 pm.test("Salary response == salary request", function () {
     pm.expect(resp.salary).to.eql(parseInt(req.salary));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/184f55f8-c10e-479c-8f81-80562b30d2b9)
+
 ### 11. Вывести в консоль параметр family из response.
 ```js
 console.log(resp.family)
@@ -95,6 +133,8 @@ pm.test("Salary 1.5 year == salary * 4", function () {
     pm.expect(resp.family.u_salary_1_5_year).to.eql(req.salary * 4);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/5745bd3a-af3b-4360-8eee-ed7b1ac38a28)
+
 http://162.55.220.72:5005/object_info_3
 1. Отправить запрос.
 2. Статус код 200
