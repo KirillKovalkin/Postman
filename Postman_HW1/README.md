@@ -1,6 +1,5 @@
 # Postman. HW_1
 
-
 ## `Создать запросы в Postman.`
 
 ### `Protocol: http`
@@ -8,7 +7,6 @@
 ### `IP: 162.55.220.72`
 
 ### `Port: 5005`
-
 
 # EP_1
 
@@ -43,7 +41,6 @@ age: int
 
 salary: int
 ```
-
 + **response:**
 ```
 {'name': name,
@@ -52,7 +49,6 @@ salary: int
           'family': {'children': [['Alex', 24], ['Kate', 12]],
                      'u_salary_1_5_year': salary * 4}}
 ```
-
 ___
 ## EP_3
 **Method: GET**
@@ -65,7 +61,6 @@ ___
  age: int
  weight: int
 ```
-
 **response:**
 ```
 {'name': name,
@@ -85,7 +80,6 @@ ___
  age: int
  salary: int
 ```
-
 + **response:** 
 ```
 {'start_qa_salary': salary,
@@ -98,7 +92,6 @@ ___
                      'u_salary_5_years': salary * 4.2}
           }
 ```
-
 ___
 ## EP_5
 **Method: GET**
@@ -106,13 +99,11 @@ ___
 **EndPoint: /object_info_3**
 
 **request url params:**
-
 ```
  name: str
  age: int
  salary: int
 ```
-
 **response:** 
 ```
 {'name': name,
@@ -126,13 +117,11 @@ ___
                      'u_salary_1_5_year': salary * 4}
           }
 ```
-
 ___
 ## EP_6
 **Method: GET**
 
 **EndPoint: /object_info_4**
-
 
 + **request url params:** 
 ``` 
@@ -140,14 +129,12 @@ ___
  age: int
  salary: int
 ```
-
 + **response:**
 ```
 {'name': name,
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
 ```
-
 ___
 ## EP_7
 **Method: POST**
