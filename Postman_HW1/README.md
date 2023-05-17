@@ -1,14 +1,14 @@
-**Postman.**
+# Postman. HW_1
 
-**HW_1**
+```
+Создать запросы в Postman.
 
-**Создать запросы в Postman.**
+Protocol: http
 
-**Protocol: http**
+IP: 162.55.220.72
 
-**IP: 162.55.220.72**
-
-**Port: 5005**
+Port: 5005
+```
 
 # EP_1
 
