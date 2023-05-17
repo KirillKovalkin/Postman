@@ -1,71 +1,93 @@
-Postman.
-HW_1
+**Postman.**
 
-Создать запросы в Postman.
+**HW_1**
 
-Protocol: http
-IP: 162.55.220.72
-Port: 5005
+**Создать запросы в Postman.**
 
-EP_1
-Method: GET
-EndPoint: /get_method
-request url params: 
- name: str
- age: int
+**Protocol: http**
 
-response: 
+**IP: 162.55.220.72**
+
+**Port: 5005**
+
+# EP_1
+
+**Method: GET**
+
+**EndPoint: /get_method**
+
++ **request url params:**
+```
+name: str
+
+age: int
+```
++ **response**: 
+```
 [
     “Str”,
     “Str”
 ]
+```
+___
+## EP_2
+**Method: POST**
 
-==================
+**EndPoint: /user_info_3**
 
-EP_2
-Method: POST
-EndPoint: /user_info_3
-request form data: 
- name: str
- age: int
- salary: int
++ **request form data:** 
+```
+name: str
 
-response: 
+age: int
+
+salary: int
+```
+
++ **response:**
+```
 {'name': name,
           'age': age,
           'salary': salary,
           'family': {'children': [['Alex', 24], ['Kate', 12]],
                      'u_salary_1_5_year': salary * 4}}
+```
 
+___
+## EP_3
+**Method: GET**
 
-==================
+**EndPoint: /object_info_1**
 
-EP_3
-Method: GET
-EndPoint: /object_info_1
-request url params: 
+**request url params:**
+ ```
  name: str
  age: int
  weight: int
+```
 
-response: 
+**response:**
+```
 {'name': name,
           'age': age,
           'daily_food': weight * 0.012,
           'daily_sleep': weight * 2.5}
+```          
+___
+## EP_4
+**Method: GET**
 
+**EndPoint: /object_info_2**
 
-==================
-
-EP_4
-Method: GET
-EndPoint: /object_info_2
-request url params: 
++ **request url params:**
+```
  name: str
  age: int
  salary: int
+```
 
-response: 
++ **response:** 
+```
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
           'qa_salary_after_12_months': salary * 2.7,
@@ -75,19 +97,24 @@ response:
                      'u_age': age,
                      'u_salary_5_years': salary * 4.2}
           }
+```
 
+___
+## EP_5
+**Method: GET**
 
-==================
+**EndPoint: /object_info_3**
 
-EP_5
-Method: GET
-EndPoint: /object_info_3
-request url params: 
+**request url params:**
+
+```
  name: str
  age: int
  salary: int
+```
 
-response: 
+**response:** 
+```
 {'name': name,
           'age': age,
           'salary': salary,
@@ -98,35 +125,44 @@ response:
                                      'age': 4}},
                      'u_salary_1_5_year': salary * 4}
           }
+```
+
+___
+## EP_6
+**Method: GET**
+
+**EndPoint: /object_info_4**
 
 
-==================
-
-EP_6
-Method: GET
-EndPoint: /object_info_4
-request url params: 
++ **request url params:** 
+``` 
  name: str
  age: int
  salary: int
+```
 
-response: 
++ **response:**
+```
 {'name': name,
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
+```
 
+___
+## EP_7
+**Method: POST**
 
-==================
+**EndPoint: /user_info_2**
 
-EP_7
-Method: POST
-EndPoint: /user_info_2
-request form data: 
+**request form data:**
+```
  name: str
  age: int
  salary: int
+```
 
-response: 
+**response:**
+```
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
           'qa_salary_after_12_months': salary * 2.7,
@@ -136,3 +172,4 @@ response:
                      'u_age': age,
                      'u_salary_5_years': salary * 4.2}
           }
+```
