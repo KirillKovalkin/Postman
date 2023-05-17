@@ -1,10 +1,22 @@
-HW_2 Postman
+## HW_2 Postman
 
-
-http://162.55.220.72:5005/first
-1. Отправить запрос.
-2. Статус код 200
-3. Проверить, что в body приходит правильный string.
+### `http://162.55.220.72:5005/first`
+### 1. Отправить запрос.
+```js
+get http://162.55.220.72:5005/first
+```
+### 2. Статус код 200
+```js
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+```
+### 3. Проверить, что в body приходит правильный string.
+```js
+pm.test("Body matches string", function () {
+    pm.expect(pm.response.text()).to.include("This is the first responce from server!ss");
+});
+```
 
 http://162.55.220.72:5005/user_info_3
 1. Отправить запрос.
