@@ -253,28 +253,116 @@ pm.test("Dog age is 4", function () {
 ___
 ### `http://162.55.220.72:5005/object_info_4`
 1. Отправить запрос.
-
-3. Статус код 200
-4. Спарсить response body в json.
-5. Спарсить request.
-6. Проверить, что name в ответе равно name s request (name забрать из request.)
-7. Проверить, что age в ответе равно age из request (age забрать из request.)
-8. Вывести в консоль параметр salary из request.
-9. Вывести в консоль параметр salary из response.
-10. Вывести в консоль 0-й элемент параметра salary из response.
-11. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
-12. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
-13. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
-14. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
-15. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
-16. Создать в окружении переменную name
-17. Создать в окружении переменную age
-18. Создать в окружении переменную salary
-19. Передать в окружение переменную name
-20. Передать в окружение переменную age
-21. Передать в окружение переменную salary
-22. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
-
++ **Request**
+```js
+GET http://162.55.220.72:5005/object_info_4
+```
++ **Response**
+```json
+{
+    "age": 30,
+    "name": "Kirill",
+    "salary": [
+        1000,
+        "2000",
+        "3000"
+    ]
+}
+```
+2. Статус код 200
+```js
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+```
+3. Спарсить response body в json.
+```js
+var resp = pm.response.json();
+```
+4. Спарсить request.
+```js
+var req = pm.request.url.query.toObject();
+```
+5. Проверить, что name в ответе равно name s request (name забрать из request.)
+```js
+pm.test("Name response == name request", function () {
+    pm.expect(resp.name).to.eql(req.name);
+});
+```
+6. Проверить, что age в ответе равно age из request (age забрать из request.)
+```js
+pm.test("Age response == age request", function () {
+    pm.expect(resp.age).to.eql(parseInt(req.age));
+});
+```
+7. Вывести в консоль параметр salary из request.
+```js
+console.log(req.salary)
+```
+8. Вывести в консоль параметр salary из response.
+```js
+console.log(resp.salary)
+```
+9. Вывести в консоль 0-й элемент параметра salary из response.
+```js
+console.log(resp.salary[0])
+```
+10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
+```js
+console.log(resp.salary[1])
+```
+11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
+```js
+console.log(resp.salary[2])
+```
+12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
+```js
+pm.test("Salary response [0] == salary request", function () {
+    pm.expect(resp.salary[0]).to.eql(parseInt(req.salary));
+});
+```
+13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
+```js
+pm.test("Salary response [1] == salary request * 2", function () {
+    pm.expect(parseInt(resp.salary[1])).to.eql(req.salary * 2);
+});
+```
+14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
+```js
+pm.test("Salary response [2] == salary request * 3", function () {
+    pm.expect(parseInt(resp.salary[2])).to.eql(req.salary * 3);
+});
+```
+15. Создать в окружении переменную name
+```js
+pm.environment.get("name");
+```
+16. Создать в окружении переменную age
+```js
+pm.environment.get("age");
+```
+17. Создать в окружении переменную salary
+```js
+pm.environment.get("salary");
+```
+18. Передать в окружение переменную name
+```js
+pm.environment.set("name", req.name);
+```
+19. Передать в окружение переменную age
+```js
+pm.environment.set("age", req.age);
+```
+20. Передать в окружение переменную salary
+```js
+pm.environment.set("salary", req.salary);
+```
+21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
+```js
+for (var i = 0; i < resp.salary.length; i++){
+    console.log("Salary " + i + ": " + resp.salary[i])
+}
+```
 ___
 ### `http://162.55.220.72:5005/user_info_2`
 1. Вставить параметр salary из окружения в request
