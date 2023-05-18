@@ -275,6 +275,8 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/6c91d7e7-1bd8-4f01-ab42-d4133abb23c4)
+
 3. Спарсить response body в json.
 ```js
 var resp = pm.response.json();
@@ -289,50 +291,70 @@ pm.test("Name response == name request", function () {
     pm.expect(resp.name).to.eql(req.name);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/9f3ff3cb-a0d8-4d07-934c-d576277ba0ba)
+
 6. Проверить, что age в ответе равно age из request (age забрать из request.)
 ```js
 pm.test("Age response == age request", function () {
     pm.expect(resp.age).to.eql(parseInt(req.age));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/13b3c951-ddcd-4d79-bc64-3de5456a164f)
+
 7. Вывести в консоль параметр salary из request.
 ```js
 console.log(req.salary)
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/c3b98f8d-23a9-48b0-a890-548dfe8cc386)
+
 8. Вывести в консоль параметр salary из response.
 ```js
 console.log(resp.salary)
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/1b47211b-7660-4692-b566-99639fb1da16)
+
 9. Вывести в консоль 0-й элемент параметра salary из response.
 ```js
 console.log(resp.salary[0])
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/7f9310c0-c81a-421c-bd3b-4f225da8d864)
+
 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
 ```js
 console.log(resp.salary[1])
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/28da5ae9-8b46-4717-98a4-d4c8c0215b17)
+
 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
 ```js
 console.log(resp.salary[2])
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/1394764e-43cc-4d81-b5b1-05f32f2723ad)
+
 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
 ```js
 pm.test("Salary response [0] == salary request", function () {
     pm.expect(resp.salary[0]).to.eql(parseInt(req.salary));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a4345175-c79d-4ad2-8dee-a3f69a2b4686)
+
 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
 ```js
 pm.test("Salary response [1] == salary request * 2", function () {
     pm.expect(parseInt(resp.salary[1])).to.eql(req.salary * 2);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/8fe69543-1069-44f3-8439-20d875fe9531)
+
 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
 ```js
 pm.test("Salary response [2] == salary request * 3", function () {
     pm.expect(parseInt(resp.salary[2])).to.eql(req.salary * 3);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a60ea57d-0cdf-4dab-a0bc-3cb92a5610e7)
+
 15. Создать в окружении переменную name
 ```js
 pm.environment.get("name");
@@ -347,15 +369,15 @@ pm.environment.get("salary");
 ```
 18. Передать в окружение переменную name
 ```js
-pm.environment.set("name", req.name);
+pm.environment.set("name", resp.name);
 ```
 19. Передать в окружение переменную age
 ```js
-pm.environment.set("age", req.age);
+pm.environment.set("age", resp.age);
 ```
 20. Передать в окружение переменную salary
 ```js
-pm.environment.set("salary", req.salary);
+pm.environment.set("salary", resp.salary);
 ```
 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
 ```js
@@ -363,6 +385,8 @@ for (var i = 0; i < resp.salary.length; i++){
     console.log("Salary " + i + ": " + resp.salary[i])
 }
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/9dd902c4-474e-42c7-8f1e-8d906eaef7ef)
+
 ___
 ### `http://162.55.220.72:5005/user_info_2`
 1. Вставить параметр salary из окружения в request
