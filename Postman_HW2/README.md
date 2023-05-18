@@ -25,7 +25,6 @@ pm.test("Body matches string", function () {
 ```
 ![image](https://github.com/KirillKovalkin/Postman/assets/108697657/c04f0c1f-8768-45db-a62f-4826d3bb1a1a)
 
-
 ___
 ### `http://162.55.220.72:5005/user_info_3`
 ### 1. Отправить запрос.
@@ -135,44 +134,149 @@ pm.test("Salary 1.5 year == salary * 4", function () {
 ```
 ![image](https://github.com/KirillKovalkin/Postman/assets/108697657/5745bd3a-af3b-4360-8eee-ed7b1ac38a28)
 
-http://162.55.220.72:5005/object_info_3
-1. Отправить запрос.
-2. Статус код 200
-3. Спарсить response body в json.
-4. Спарсить request.
-5. Проверить, что name в ответе равно name s request (name забрать из request.)
-6. Проверить, что age в ответе равно age s request (age забрать из request.)
-7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
-8. Вывести в консоль параметр family из response.
-9. Проверить, что у параметра dog есть параметры name.
-10. Проверить, что у параметра dog есть параметры age.
-11. Проверить, что параметр name имеет значение Luky.
-12. Проверить, что параметр age имеет значение 4.
+___
+### `http://162.55.220.72:5005/object_info_3`
+### 1. Отправить запрос.
++ **Request**
+```js
+GET http://162.55.220.72:5005/object_info_3
+```
++ **Response**
+```json
+{
+    "age": "30",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "pets": {
+            "cat": {
+                "age": 3,
+                "name": "Sunny"
+            },
+            "dog": {
+                "age": 4,
+                "name": "Luky"
+            }
+        },
+        "u_salary_1_5_year": 4000
+    },
+    "name": "Kirill",
+    "salary": 1000
+}
+```
+### 2. Статус код 200
+```js
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/2a270a16-7f21-4144-9480-db11cd29e3cb)
 
-http://162.55.220.72:5005/object_info_4
-1. Отправить запрос.
-2. Статус код 200
-3. Спарсить response body в json.
-4. Спарсить request.
-5. Проверить, что name в ответе равно name s request (name забрать из request.)
-6. Проверить, что age в ответе равно age из request (age забрать из request.)
-7. Вывести в консоль параметр salary из request.
-8. Вывести в консоль параметр salary из response.
-9. Вывести в консоль 0-й элемент параметра salary из response.
-10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
-11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
-12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
-13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
-14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
-15. Создать в окружении переменную name
-16. Создать в окружении переменную age
-17. Создать в окружении переменную salary
-18. Передать в окружение переменную name
-19. Передать в окружение переменную age
-20. Передать в окружение переменную salary
-21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
+### 3. Спарсить response body в json.
+```js
+var resp = pm.response.json();
+```
+### 4. Спарсить request.
+```js
+var req = pm.request.url.query.toObject();
+```
+### 5. Проверить, что name в ответе равно name s request (name забрать из request.)
+```js
+pm.test("Name response == name request", function () {
+    pm.expect(resp.name).to.eql(req.name);
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/9a8f5338-eb0e-421e-997a-70eb10ec986a)
 
-http://162.55.220.72:5005/user_info_2
+### 6. Проверить, что age в ответе равно age s request (age забрать из request.)
+```js
+pm.test("Age response == age request", function () {
+    pm.expect(resp.age).to.eql(req.age);
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/34c8c593-33ca-4cc7-a30c-2835fbf09919)
+
+### 7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
+```js
+pm.test("Salary response == salary request", function () {
+    pm.expect(resp.salary).to.eql(parseInt(req.salary));
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a96da56b-c136-463d-a651-3cee08f062b9)
+
+### 8. Вывести в консоль параметр family из response.
+```js
+console.log (resp.family)
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/c2d47d7a-21ce-4307-9869-187471e06cdf)
+
+### 9. Проверить, что у параметра dog есть параметры name.
+```js
+pm.test("Dog contain name", function () {
+    pm.expect(resp.family.pets.dog).to.have.property("name");
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/4af9f89e-8922-4f27-9ba6-e7cbc25aa416)
+
+### 10. Проверить, что у параметра dog есть параметры age.
+```js
+pm.test("Dog contain age", function () {
+    pm.expect(resp.family.pets.dog).to.have.property("age");
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/84c9cd4a-a22b-493b-aa88-7d4ff36a460b)
+
+### 11. Проверить, что параметр name имеет значение Luky.
+```js
+pm.test("Dog name is Luky", function () {
+    pm.expect(resp.family.pets.dog.name).to.eql("Luky");
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/962ba3c9-3a38-4df1-b1dc-d47b9f1e6002)
+
+### 12. Проверить, что параметр age имеет значение 4.
+```js
+pm.test("Dog age is 4", function () {
+    pm.expect(resp.family.pets.dog.age).to.eql(4);
+});
+```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/371c24f4-ff5a-4f49-b327-f5b9006db4d8)
+
+___
+### `http://162.55.220.72:5005/object_info_4`
+1. Отправить запрос.
+
+3. Статус код 200
+4. Спарсить response body в json.
+5. Спарсить request.
+6. Проверить, что name в ответе равно name s request (name забрать из request.)
+7. Проверить, что age в ответе равно age из request (age забрать из request.)
+8. Вывести в консоль параметр salary из request.
+9. Вывести в консоль параметр salary из response.
+10. Вывести в консоль 0-й элемент параметра salary из response.
+11. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
+12. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
+13. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
+14. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
+15. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
+16. Создать в окружении переменную name
+17. Создать в окружении переменную age
+18. Создать в окружении переменную salary
+19. Передать в окружение переменную name
+20. Передать в окружение переменную age
+21. Передать в окружение переменную salary
+22. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
+
+___
+### `http://162.55.220.72:5005/user_info_2`
 1. Вставить параметр salary из окружения в request
 2. Вставить параметр age из окружения в age
 3. Вставить параметр name из окружения в name
