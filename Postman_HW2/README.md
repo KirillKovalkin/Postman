@@ -431,6 +431,8 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a3408d2b-64a4-458e-8b4a-2e9a654243f9)
+
 ### 6. Спарсить response body в json.
 ```js
 var resp = pm.response.json();
@@ -445,87 +447,116 @@ pm.test("Response contain start_qa_salary", function () {
     pm.expect(resp).to.have.property("start_qa_salary");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a0576557-1dd3-4424-a32b-3ecf0e195f22)
+
 ### 9. Проверить, что json response имеет параметр qa_salary_after_6_months
 ```js
 pm.test("Response contain qa_salary_after_6_months", function () {
     pm.expect(resp).to.have.property("qa_salary_after_6_months");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/6656d04b-361d-42bc-ae76-81fbe33887ea)
+
 ### 10. Проверить, что json response имеет параметр qa_salary_after_12_months
 ```js
 pm.test("Response contain qa_salary_after_12_months", function () {
     pm.expect(resp).to.have.property("qa_salary_after_12_months");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/5ea6c304-eb9e-402e-b007-54b86701d817)
+
 ### 11. Проверить, что json response имеет параметр qa_salary_after_1.5_year
 ```js
 pm.test("Response contain qa_salary_after_1.5_year", function () {
     pm.expect(resp).to.have.property("qa_salary_after_1.5_year");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/0e21537d-47b9-4156-88cc-6ae79c0e8cdc)
+
 ### 12. Проверить, что json response имеет параметр qa_salary_after_3.5_years
 ```js
 pm.test("Response contain qa_salary_after_3.5_years", function () {
     pm.expect(resp).to.have.property("qa_salary_after_3.5_years");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/cf577c36-a669-444d-ba7a-53fcdb8086ca)
+
 ### 13. Проверить, что json response имеет параметр person
 ```js
 pm.test("Json response contain person", function () {
     pm.expect(resp).to.have.property("person");
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/fa885c5d-3ad4-47e7-b28d-28dfb6a211de)
+
 ### 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
 ```js
 pm.test("Start_qa_salary response == salary request", function () {
     pm.expect(resp.start_qa_salary).to.eql(parseInt(req.salary));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/11fb735e-d926-4cd6-83e8-3e110fcc2759)
+
 ### 15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
 ```js
 pm.test("Qa_salary_after_6_months response == salary request * 2", function () {
     pm.expect(resp.qa_salary_after_6_months).to.eql(req.salary * 2);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a802494b-3aba-4aea-bda3-19d698d1cbfd)
+
 ### 16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
 ```js
 pm.test("Qa_salary_after_12_months response == salary request * 2.7", function () {
     pm.expect(resp.qa_salary_after_12_months).to.eql(req.salary * 2.7);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/f8285647-5184-45c9-b009-ffd8f3686a07)
+
 ### 17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)
 ```js
 pm.test("Qa_salary_after_1.5_year response равен salary request * 3.3", function () {
     pm.expect(resp["qa_salary_after_1.5_year"]).to.eql(req.salary * 3.3);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/bdc00ecc-8a46-4bc2-ad99-ca39dbde7b9e)
+
 ### 18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)
 ```js
 pm.test("Qa_salary_after_3.5_years response равен salary request * 3.8", function () {
     pm.expect(resp["qa_salary_after_3.5_years"]).to.eql(req.salary * 3.8);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/a18ffcad-5edb-44b2-b17b-a5a7d76f4d82)
+
 ### 19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request.)
 ```js
 pm.test("person.u_name[1] response == salary request", function () {
     pm.expect(resp.person.u_name[1]).to.eql(parseInt(req.salary));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/cd56e7dc-7ebc-491c-83f7-4435072285d7)
+
 ### 20. Проверить, что что параметр u_age равен age из request (age забрать из request.)
 ```js
 pm.test("person.u_age response == age request", function () {
     pm.expect(resp.person.u_age).to.eql(parseInt(req.age));
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/9925c2ce-69bd-4681-91da-c97a0250a5cc)
+
 ### 21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)
 ```js
 pm.test("u_salary_5_years response == salary * 4.2 request", function () {
     pm.expect(resp.person.u_salary_5_years).to.eql(req.salary * 4.2);
 });
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/ab2390b4-7ba0-4c82-abc7-2f91c3876654)
+
 ### 22. Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
 ```js
 for (i in resp.person) {
   console.log(`${i} = ${resp.person[i]}`);
 }
 ```
+![image](https://github.com/KirillKovalkin/Postman/assets/108697657/c112fa7c-ca4e-43d9-a311-9b1e2b833e51)
