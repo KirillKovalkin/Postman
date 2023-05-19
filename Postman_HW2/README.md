@@ -525,7 +525,7 @@ pm.test("u_salary_5_years response == salary * 4.2 request", function () {
 ```
 ### 22. Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
 ```js
-for (var i in resp.person){
-    console.log(i)
-}	
+for (i in resp.person) {
+  console.log(`${i} = ${resp.person[i]}`);
+}
 ```
